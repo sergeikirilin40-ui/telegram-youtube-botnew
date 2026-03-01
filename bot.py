@@ -54,15 +54,16 @@ def download(message):
             }
         else:
             out = f"{TEMP_DIR}/{uid}.mp3"
-            ydl_opts = {
-                "outtmpl": f"{TEMP_DIR}/{uid}.%(ext)s",
-                "format": "bestaudio/best",
-                "postprocessors": [{
-                    "key": "FFmpegExtractAudio",
-                    "preferredcodec": "mp3",
-                    "preferredquality": "192"
-                }]
-            }
+         ydl_opts = {
+    'format': 'best',
+    'noplaylist': True,
+    'quiet': True,
+    'nocheckcertificate': True,
+    'geo_bypass': True,
+    'http_headers': {
+        'User-Agent': 'Mozilla/5.0'
+    }
+
 
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             ydl.download([message.text])
@@ -74,5 +75,6 @@ def download(message):
 
     except Exception as e:
         bot.send_message(chat_id, f"Ошибка 😢\n{e}")
+
 
 bot.infinity_polling(timeout=10, long_polling_timeout=5)
