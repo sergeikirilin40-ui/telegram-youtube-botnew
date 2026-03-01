@@ -53,15 +53,17 @@ def download(message):
                 "format": "best[ext=mp4]/best"
             }
         else:
-            out = f"{TEMP_DIR}/{uid}.mp3"
-         ydl_opts = {
-    'format': 'best',
-    'noplaylist': True,
-    'quiet': True,
-    'nocheckcertificate': True,
-    'geo_bypass': True,
-    'http_headers': {
-        'User-Agent': 'Mozilla/5.0'
+    out = f"{TEMP_DIR}/{uid}.mp3"
+
+    ydl_opts = {
+        'format': 'best',
+        'noplaylist': True,
+        'quiet': True,
+        'nocheckcertificate': True,
+        'geo_bypass': True,
+        'http_headers': {
+            'User-Agent': 'Mozilla/5.0'
+        }
     }
 
 
@@ -78,3 +80,4 @@ def download(message):
 
 
 bot.infinity_polling(timeout=10, long_polling_timeout=5)
+
