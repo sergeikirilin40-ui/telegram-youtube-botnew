@@ -53,9 +53,9 @@ def download(message):
                 "format": "best[ext=mp4]/best"
             }
         else:
-    out = f"{TEMP_DIR}/{uid}.mp3"
+    out =    f"{TEMP_DIR}/{uid}.mp3"
 
-    ydl_opts = {
+    ydl_opts =        {
         'format': 'best',
         'noplaylist': True,
         'quiet': True,
@@ -80,4 +80,5 @@ def download(message):
 
 
 bot.infinity_polling(timeout=10, long_polling_timeout=5)
+
 
